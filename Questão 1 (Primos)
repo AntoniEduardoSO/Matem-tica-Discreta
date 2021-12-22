@@ -1,0 +1,28 @@
+#include <stdio.h>
+#include <stdbool.h>
+
+bool eh_primo(int num, int divisor, int achou)
+{
+
+    if(num == 1 ^ num == 0) return false;
+
+    if(num <= divisor){
+        if(num % divisor  == 0) achou++;
+
+        divisor++;
+        eh_primo(num,divisor,achou);
+    }
+
+    else{
+        if(achou > 1) return true;
+        else return false;
+    }
+}
+
+int main(void)
+{
+    int num;
+    scanf("%d", &num);
+
+    printf("%d", eh_primo(num,2,0) );
+}
