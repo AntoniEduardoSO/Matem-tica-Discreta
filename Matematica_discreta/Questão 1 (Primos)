@@ -1,0 +1,37 @@
+#include <stdio.h>
+#include <stdbool.h>
+
+bool eh_primo(int num, int divisor, int achou)
+{
+
+    if(num == 1 || num == 0) return false;
+
+    if(num >= divisor){
+        if(num % divisor  == 0) achou++;
+
+        divisor++;
+        eh_primo(num,divisor,achou);
+    }
+
+    else{
+        if(achou > 1) return false;
+        else return true;
+    }
+}
+
+void input()
+{
+  int num;
+  if(scanf("%d", &num) != EOF){
+      if ( eh_primo(num,2,0) ) printf("%d -> eh primo!\n", num);
+      else printf("%d -> nao eh primo!\n", num);
+      
+      input();
+    }
+}
+
+int main(void)
+{
+    printf("Digite quantas vezes quiser numeros aleatorios e eu direi se sao primos ou nao!\n");
+    input();
+}
